@@ -42,14 +42,6 @@
                                       aria-describedby="defaultFormControlHelp"
                                     />
 
-                                    <label for="exampleFormControlSelect1" class="form-label">Category</label>
-                                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                                      <option selected>กรุณาเลือกประเภทสินค้า</option>
-                                      <option value="1">สายไฟ สวิตปลั๊ก ปลั๊กไฟ</option>
-                                      <option value="2">อุปกรณ์เครื่องมือช่าง</option>
-                                      <option value="3">ท่อ & ข้อต่อ</option>
-                                    </select>
-
 
                                     <label for="defaultFormControlInput" class="form-label">Images</label>
                                       <div class="input-group">

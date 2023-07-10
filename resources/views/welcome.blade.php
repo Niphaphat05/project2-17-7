@@ -34,9 +34,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
 </head>
 
 <body>
+@include('sweetalert::alert')
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
@@ -177,27 +179,28 @@
           <p>สินค้าดี มีคุณภาพ ราคาถูก ปลอดภัย การสั่งซื้อจัดส่งรวดเร็ว บริการด้วยความใส่ใจ</p>
         </div>
 
-        <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-app">สายไฟ สวิตปลั๊ก ปลั๊กไฟ</li>
-          <li data-filter=".filter-card">อุปกรณ์เครื่องมือช่าง</li>
-          <li data-filter=".filter-web">ท่อ & ข้อต่อ</li>
-        </ul>
+
 
 <!--ชุดที่ 1-->
 
+
+
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+        @foreach($product as $pro)
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="{{ asset('frontend/assets/img/portfolio/portfolio-1.jpg')}}" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="{{ asset('backend/img/img_pro/'.$pro->image)}}" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
-              <h4>CSCรางปลั๊กไฟ มอก.5 ช่อง 1สวิตซ์ <br> รุ่นAS551 ยาว 3 เมตร </h4>
-              <p>ราคา: 379.00฿</p>
-              <a href="{{ asset('frontend/assets/img/portfolio/portfolio-1.jpg')}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
-              title="<b>CSCรางปลั๊กไฟ มอก.5 ช่อง 1สวิตซ์ รุ่นAS551<br> ยาว 3 เมตร <br><br> ราคา: 379.00฿"><i class="bx bx-plus"></i></a>
+              <h4>{{$pro->name}}</h4>
+              <p>ราคา: {{$pro->price}} ฿</p>
+              <a href="{{ asset('backend/img/img_pro/'.$pro->image)}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+              title="<b>{{$pro->name}}<br> {{$pro->description}} <br><br> ราคา: {{$pro->price}} ฿"><i class="bx bx-plus"></i></a>
               <a href="portfolio-details.html" class="" title=""><i class=""></i></a>
             </div>
         </div>
+        @endforeach
         </div>
+
+
 <!--จบชุดที่ 1-->
 
 
@@ -244,7 +247,8 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{{route('con.create')}}" method="POST" role="form" class="php-email-form">
+                @csrf
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -261,7 +265,7 @@
               </div>
               <div class="form-group">
                 <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
+                <textarea class="form-control" name="massage" rows="10" required></textarea>
               </div>
               <div class="my-3">
                 <div class="loading">Loading</div>

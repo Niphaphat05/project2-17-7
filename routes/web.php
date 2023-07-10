@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ContactController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -17,15 +18,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->with('product',Product::all());
 });
-Route::get('/product', function () {
-    return view('front_end.product')
-    ->with('product',Product::all());
-});
-Route::get('/contact', function () {
-    return view('front_end.contact');
-});
+
+
+Route::post('/contact/create',[ContactController::class, 'create'])->name('con.create');
 
 Auth::routes();
 
